@@ -18,4 +18,7 @@ def create_app(config_name):
     from accounts import accounts as accounts_blueprint
     app.register_blueprint(accounts_blueprint)
 
+    from accounts.rest import accounts_api_blueprint
+    app.register_blueprint(accounts_api_blueprint, url_prefix="/v1/api/accounts")
+
     return app
