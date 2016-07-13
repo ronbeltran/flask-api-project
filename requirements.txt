@@ -1,5 +1,8 @@
 Flask==0.11
 Flask-Cors==2.1.2
+Flask-JWT==0.3.2
+Flask-Login==0.3.2
+Flask-Mail==0.9.1
 Flask-Migrate==1.8.0
 Flask-RESTful==0.3.5
 Flask-SQLAlchemy==2.1
@@ -12,6 +15,7 @@ SQLAlchemy==1.0.13
 Werkzeug==0.11.10
 alembic==0.8.6
 aniso8601==1.1.0
+blinker==1.4
 cffi==1.7.0
 click==6.6
 cryptography==1.4
