@@ -15,6 +15,9 @@ class User(db.Model):
     password_hash = db.Column(db.String(255), index=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
     updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    is_active = db.Column(db.Boolean, index=True, default=False)
+    is_staff = db.Column(db.Boolean, index=True, default=False)
+    is_superuser = db.Column(db.Boolean, index=True, default=False)
 
     def __init__(self, username, email, password, first_name=None, last_name=None):
         self.username = username
