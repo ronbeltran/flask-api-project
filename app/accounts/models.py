@@ -1,3 +1,5 @@
+import datetime
+
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 
@@ -11,6 +13,8 @@ class User(db.Model):
     first_name = db.Column(db.String(255), nullable=True)
     last_name = db.Column(db.String(255), nullable=True)
     password_hash = db.Column(db.String(255), index=True, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
 
     def __init__(self, username, email, password, first_name=None, last_name=None):
         self.username = username
