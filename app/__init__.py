@@ -16,7 +16,7 @@ def create_app(config_name):
 
     # initializations
     db.init_app(app)
-    jwt = JWT(app, jwt_authenticate, jwt_identity)
+    jwt = JWT(app, jwt_authenticate, jwt_identity)  # noqa
 
     # routes
     from accounts import accounts as accounts_blueprint
