@@ -41,5 +41,19 @@ class User(db.Model):
     def fullname(self):
         return "{0} {1}".format(self.first_name, self.last_name)
 
+    def to_json(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "created_at": self.created_at.isoformat(),
+            "updated_at": self.updated_at.isoformat() if self.updated_at else None,
+            "is_active": self.is_active,
+            "is_staff": self.is_staff,
+            "is_superuser": self.is_superuser,
+        }
+
     def __repr__(self):
         return "<User: %r>" % self.email
