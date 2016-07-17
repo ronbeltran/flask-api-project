@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt import JWT
 
 from config import config
+from accounts.jwt_helper import jwt_authenticate
+from accounts.jwt_helper import jwt_identity
 
 db = SQLAlchemy()
 
@@ -13,6 +16,7 @@ def create_app(config_name):
 
     # initializations
     db.init_app(app)
+    jwt = JWT(app, jwt_authenticate, jwt_identity)
 
     # routes
     from accounts import accounts as accounts_blueprint

@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -15,7 +16,7 @@ def get_env_variable(var_name, default_value=None):
         raise ValueError(error_msg)
 
 
-class BaseConfig:
+class BaseConfig(object):
     DEBUG = False
     TESTING = False
     SECRET_KEY = get_env_variable("SECRET_KEY", "")
@@ -40,7 +41,12 @@ class BaseConfig:
     # flask-restful
     ERROR_404_HELP = False
     BUNDLE_ERRORS = True
+    # flask-jwt
     JWT_PUBLIC_KEY = get_env_variable("JWT_PUBLIC_KEY")
+    JWT_LEEWAY = timedelta(hours=1)
+    JWT_EXPIRATION_DELTA = timedelta(days=1)
+    JWT_ALGORITHM = "HS256"
+    JWT_AUTH_HEADER_PREFIX = "Bearer"
 
     @staticmethod
     def init_app(app):
