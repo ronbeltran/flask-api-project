@@ -37,16 +37,15 @@
     psql (9.5.3)
     Type "help" for help.
 
-    postgres=# CREATE DATABASE my_db;
-    CREATE DATABASE
+    postgres=# CREATE DATABASE my_db WITH OWNER=my_db_user encoding="UTF-8" lc_collate="en_US.UTF-8" lc_ctype="en_US.UTF-8" template=template0;
     postgres=# CREATE USER my_db_user WITH PASSWORD 'pass';
     CREATE ROLE
-    postgres=# ALTER ROLE my_db SET client_encoding TO 'utf-8';
+    postgres=# ALTER ROLE my_db_user SET client_encoding TO 'utf-8';
     ALTER ROLE
-    postgres=# ALTER ROLE my_db SET default_transaction_isolation TO
+    postgres=# ALTER ROLE my_db_user SET default_transaction_isolation TO
     'read committed';
     ALTER ROLE
-    postgres=# ALTER ROLE my_db SET timezone to 'UTC';
+    postgres=# ALTER ROLE my_db_user SET timezone to 'UTC';
     ALTER ROLE
     postgres=# GRANT ALL PRIVILEGES ON DATABASE my_db to
     my_db_user;
